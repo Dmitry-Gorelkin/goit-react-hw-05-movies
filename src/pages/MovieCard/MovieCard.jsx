@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useParams, useLocation, Outlet } from 'react-router-dom';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { fhechGetDetailshMovies } from 'api';
 import image from '../../img/film-card.jpg';
