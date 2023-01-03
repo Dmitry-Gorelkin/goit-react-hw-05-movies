@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { Navigation } from 'components/Navigation/Navigation';
 import { SearchMovie } from 'components/SearchMovie/SearchMovie';
 import { MovieList } from 'components/MovieList/MovieList';
 import { fhechSearchMovies } from 'api';
@@ -51,7 +50,6 @@ const Movies = () => {
 
   return (
     <>
-      <Navigation />
       <SearchMovie onSubmit={onSubmitMovie} query={query} />
       <MovieList movies={movies} />
     </>

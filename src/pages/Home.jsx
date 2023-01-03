@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { fhechPopularMovies } from 'api';
-import { Navigation } from 'components/Navigation/Navigation';
 import { MovieList } from 'components/MovieList/MovieList';
 import { Loader } from 'components/Loader/Loader';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState('ideal');
 
@@ -43,10 +42,11 @@ export const Home = () => {
 
   return (
     <>
-      <Navigation />
       <h2>Trending today</h2>
       {movies.length !== 0 && <MovieList movies={movies} />}
       {status === 'laoding' && <Loader />}
     </>
   );
 };
+
+export default Home;

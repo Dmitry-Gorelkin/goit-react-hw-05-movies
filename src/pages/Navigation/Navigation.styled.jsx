@@ -3,8 +3,9 @@ import styled from 'styled-components';
 
 export const Nav = styled.div`
   display: flex;
-  padding-top: ${p => p.theme.space[4]}px;
-  padding-bottom: ${p => p.theme.space[4]}px;
+  padding-top: ${p => p.theme.space[3]}px;
+  padding-bottom: ${p => p.theme.space[3]}px;
+  box-shadow: 0px 0px 16px 0px rgba(0, 194, 224, 0.5);
 `;
 
 export const StyledLink = styled(NavLink)`

@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { fhechGetDetailshMovies } from 'api';
 import image from '../../img/film-card.jpg';
 import { StyledLinkCardBack, StyledLinkCard } from './MovieCard.styled';
-// import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 
 const MovieCard = () => {
   const { id } = useParams();
@@ -36,7 +36,7 @@ const MovieCard = () => {
   const { title, overview, genresString, posterPath } = movie;
 
   return (
-    <div>
+    <>
       <div>
         <StyledLinkCardBack to={backLinkHref.current}>
           Go back
@@ -57,12 +57,11 @@ const MovieCard = () => {
         <StyledLinkCard to="reviews">Reviews</StyledLinkCard>
       </div>
       <div>
-        {/* <Suspense fallback={<Loader />}> */}
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </div>
-    </div>
+    </>
   );
 };
 
