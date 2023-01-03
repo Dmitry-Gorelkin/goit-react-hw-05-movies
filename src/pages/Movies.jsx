@@ -6,7 +6,7 @@ import { SearchMovie } from 'components/SearchMovie/SearchMovie';
 import { MovieList } from 'components/MovieList/MovieList';
 import { fhechSearchMovies } from 'api';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState(() => searchParams.get('query') ?? '');
@@ -57,3 +57,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

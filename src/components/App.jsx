@@ -1,11 +1,17 @@
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { Container } from './Container/Container.styled';
 import { Home } from 'pages/Home';
-import { Movies } from 'pages/Movies';
-import { MovieCard } from 'pages/MovieCard/MovieCard';
-import { Cast } from './Cast/Cast';
-import { Reviews } from './Reviews/Reviews';
+// import { Movies } from 'pages/Movies';
+// import { MovieCard } from 'pages/MovieCard/MovieCard';
+// import { Cast } from './Cast/Cast';
+// import { Reviews } from './Reviews/Reviews';
+
+const Movies = lazy(() => import('pages/Movies'));
+const MovieCard = lazy(() => import('pages/MovieCard/MovieCard'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (

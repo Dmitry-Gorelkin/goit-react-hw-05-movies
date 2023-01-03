@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { fhechGetCreditsMovies } from 'api';
 import image from '../../img/film-card.jpg';
 
-export const Cast = () => {
+const Cast = () => {
   const { id } = useParams();
   const [cast, setCast] = useState([]);
 
@@ -46,3 +46,5 @@ export const Cast = () => {
     </ul>
   );
 };
+
+export default Cast;

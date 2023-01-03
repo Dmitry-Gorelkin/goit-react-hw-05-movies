@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { useParams, useLocation, Outlet } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { fhechGetDetailshMovies } from 'api';
 import image from '../../img/film-card.jpg';
-import { StyledLinkCard } from './MovieCard.styled';
+import { StyledLinkCardBack, StyledLinkCard } from './MovieCard.styled';
+// import { Loader } from 'components/Loader/Loader';
 
-export const MovieCard = () => {
+const MovieCard = () => {
   const { id } = useParams();
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? '/');
@@ -37,7 +38,9 @@ export const MovieCard = () => {
   return (
     <div>
       <div>
-        <StyledLinkCard to={backLinkHref.current}>Go back</StyledLinkCard>
+        <StyledLinkCardBack to={backLinkHref.current}>
+          Go back
+        </StyledLinkCardBack>
       </div>
       <div>
         <img src={posterPath} alt={title} />
@@ -54,8 +57,13 @@ export const MovieCard = () => {
         <StyledLinkCard to="reviews">Reviews</StyledLinkCard>
       </div>
       <div>
-        <Outlet />
+        {/* <Suspense fallback={<Loader />}> */}
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
     </div>
   );
 };
+
+export default MovieCard;
