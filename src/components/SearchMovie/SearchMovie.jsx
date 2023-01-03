@@ -1,7 +1,7 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 
-export const SearchMovie = ({ onSubmit }) => {
-  // const [query, setQuery] = useState('');
+export const SearchMovie = ({ query, onSubmit }) => {
+  const [value, setValue] = useState(() => query);
 
   return (
     <div>
@@ -9,8 +9,8 @@ export const SearchMovie = ({ onSubmit }) => {
         <input
           type="text"
           placeholder="Search name movie"
-          // value={query}
-          // onChange={e => setQuery(e.target.value)}
+          value={value}
+          onChange={e => setValue(e.target.value)}
         />
       </form>
     </div>

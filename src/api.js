@@ -28,9 +28,9 @@ export const fhechSearchMovies = async query => {
   return response.data;
 };
 
-export const fhechGetDetailshMovies = async movie_id => {
+export const fhechGetDetailshMovies = async idMovie => {
   const options = {
-    url: `/movie/${movie_id}`,
+    url: `/movie/${idMovie}`,
     params: {
       api_key: API_KEY,
     },
@@ -40,9 +40,9 @@ export const fhechGetDetailshMovies = async movie_id => {
   return response.data;
 };
 
-export const fhechGetCreditsMovies = async movie_id => {
+export const fhechGetCreditsMovies = async idMovie => {
   const options = {
-    url: `/movie/${movie_id}/credits`,
+    url: `/movie/${idMovie}/credits`,
     params: {
       api_key: API_KEY,
     },
@@ -52,9 +52,9 @@ export const fhechGetCreditsMovies = async movie_id => {
   return response.data;
 };
 
-export const fhechGetReviewsMovies = async movie_id => {
+export const fhechGetReviewsMovies = async idMovie => {
   const options = {
-    url: `/movie/${movie_id}/reviews`,
+    url: `/movie/${idMovie}/reviews`,
     params: {
       api_key: API_KEY,
     },

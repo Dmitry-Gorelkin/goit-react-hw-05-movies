@@ -7,7 +7,7 @@ export const Nav = styled.div`
   padding-bottom: ${p => p.theme.space[4]}px;
 `;
 
-export const SlyledLink = styled(NavLink)`
+export const StyledLink = styled(NavLink)`
   display: block;
   padding: ${p => p.theme.space[3]}px;
   text-decoration: none;

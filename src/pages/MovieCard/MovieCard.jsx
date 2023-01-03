@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { Link, useParams, useLocation, Outlet } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { fhechGetDetailshMovies } from 'api';
+import image from '../../img/film-card.jpg';
+import { StyledLinkCard } from './MovieCard.styled';
 
 export const MovieCard = () => {
   const { id } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = useRef(location.state?.from ?? '/');
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
@@ -13,22 +16,28 @@ export const MovieCard = () => {
       try {
         const movieData = await fhechGetDetailshMovies(id);
         const { title, overview, genres, poster_path } = movieData;
-        const posterPath = `https://image.tmdb.org/t/p/w500/${poster_path}`;
+        const posterPath = poster_path
+          ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+          : image;
         const genresString = genres.map(e => e.name).join(' ');
 
         setMovie({ title, overview, genresString, posterPath });
-      } catch {}
+      } catch {
+        toast.error(
+          `Что-то пошло не так, попробуйте перезагрузить страницу попозже.`
+        );
+      }
     };
 
     movieDetailsFech();
-  }, [id]);
+  }, []);
 
   const { title, overview, genresString, posterPath } = movie;
 
   return (
     <div>
       <div>
-        <Link to={backLinkHref}>Go back</Link>
+        <StyledLinkCard to={backLinkHref.current}>Go back</StyledLinkCard>
       </div>
       <div>
         <img src={posterPath} alt={title} />
@@ -38,6 +47,14 @@ export const MovieCard = () => {
         <p>{overview}</p>
         <h3>Genres</h3>
         <p>{genresString}</p>
+      </div>
+      <div>
+        <p>Additional information</p>
+        <StyledLinkCard to="cast">Cast</StyledLinkCard>
+        <StyledLinkCard to="reviews">Reviews</StyledLinkCard>
+      </div>
+      <div>
+        <Outlet />
       </div>
     </div>
   );
