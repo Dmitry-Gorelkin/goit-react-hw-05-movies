@@ -30,7 +30,7 @@ export const MovieCard = () => {
     };
 
     movieDetailsFech();
-  }, []);
+  }, [id]);
 
   const { title, overview, genresString, posterPath } = movie;
 
