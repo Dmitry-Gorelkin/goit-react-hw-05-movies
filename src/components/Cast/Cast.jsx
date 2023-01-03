@@ -29,7 +29,7 @@ const Cast = () => {
     };
 
     movieCastFech();
-  }, []);
+  }, [id]);
 
   return (
     <ul>

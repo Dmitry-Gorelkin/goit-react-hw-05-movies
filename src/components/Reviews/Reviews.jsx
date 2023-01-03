@@ -26,7 +26,7 @@ const Reviews = () => {
     };
 
     movieReviewsFech();
-  }, []);
+  }, [id]);
 
   return (
     <ul>
