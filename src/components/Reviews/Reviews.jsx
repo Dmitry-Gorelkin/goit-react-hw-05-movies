@@ -11,11 +11,17 @@ const Reviews = () => {
     const movieReviewsFech = async () => {
       try {
         const movieData = await fhechGetReviewsMovies(id);
+        console.log(movieData);
+
+        if (movieData.total_results === 0) {
+          console.log("we don't have any reviews for this movie.");
+          return;
+        }
+
         const arrMovieData = movieData.results.map(e => {
           const { id, author, content } = e;
           return { id, author, content };
         });
-        console.log(movieData);
 
         setReviews([...arrMovieData]);
       } catch {

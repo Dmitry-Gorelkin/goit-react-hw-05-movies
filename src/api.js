@@ -15,12 +15,13 @@ export const fhechPopularMovies = async () => {
   return response.data;
 };
 
-export const fhechSearchMovies = async query => {
+export const fhechSearchMovies = async (query, page = 1) => {
   const options = {
     url: '/search/movie',
     params: {
       api_key: API_KEY,
       query,
+      page,
     },
   };
 

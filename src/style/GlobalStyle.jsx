@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
+import 'rc-pagination/assets/index.css';
+import 'rc-pagination/assets/index.less';
 
 export const GlobalStyle = createGlobalStyle`
     body {
