@@ -28,7 +28,7 @@ const Movies = () => {
       return;
     }
 
-    setSearchParams({ query: queryMovie });
+    setPage(1);
     setQuery(queryMovie);
   };
 
@@ -36,14 +36,14 @@ const Movies = () => {
     const searchApi = async (query, page) => {
       setStatus('laoding');
       setMovies([]);
+      setTotalResults(0);
 
       try {
         const movieList = await fhechSearchMovies(query, page);
 
         if (movieList.total_results === 0) {
           toast(`По вашему запросу: ${query}, мы ничего не нашли.`);
-          setMovies([]);
-          setTotalResults(0);
+          setSearchParams({});
           setStatus('ideal');
           return;
         }
@@ -73,7 +73,6 @@ const Movies = () => {
       <SearchMovie onSubmit={onSubmitMovie} query={query} />
       {movies.length !== 0 && <MovieList movies={movies} />}
       {status === 'laoding' && <Loader />}
-      {/* <MovieList movies={movies} /> */}
 
       {totalResults > 20 && (
         <Pagination
@@ -81,6 +80,19 @@ const Movies = () => {
           current={page}
           total={totalResults}
           pageSize={20}
+          locale={{
+            items_per_page: '/ page',
+            jump_to: 'Go to',
+            jump_to_confirm: 'confirm',
+            page: 'Page',
+            prev_page: 'Previous Page',
+            next_page: 'Next Page',
+            prev_5: 'Previous 5 Pages',
+            next_5: 'Next 5 Pages',
+            prev_3: 'Previous 3 Pages',
+            next_3: 'Next 3 Pages',
+            page_size: 'Page Size',
+          }}
         />
       )}
     </>
