@@ -53,11 +53,12 @@ export const fhechGetCreditsMovies = async idMovie => {
   return response.data;
 };
 
-export const fhechGetReviewsMovies = async idMovie => {
+export const fhechGetReviewsMovies = async (idMovie, page = 1) => {
   const options = {
     url: `/movie/${idMovie}/reviews`,
     params: {
       api_key: API_KEY,
+      page,
     },
   };
 

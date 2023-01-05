@@ -12,15 +12,21 @@ export const Nav = styled.div`
 `;
 
 export const StyledLink = styled(NavLink)`
-  display: block;
+  width: ${p => p.theme.space[7]}px;
+
+  display: flex;
+  justify-content: center;
+
   padding: ${p => p.theme.space[3]}px;
   text-decoration: none;
   color: ${p => p.theme.colors.dark};
+  border-radius: ${p => p.theme.space[3]}px;
+
+  cursor: pointer;
 
   &.active {
     color: ${p => p.theme.colors.white};
     background-color: ${p => p.theme.colors.accent};
-    border-radius: ${p => p.theme.space[3]}px;
   }
 
   &:not(:last-child) {
@@ -30,5 +36,6 @@ export const StyledLink = styled(NavLink)`
   :hover:not(.active),
   :focus-visible:not(.active) {
     color: ${p => p.theme.colors.accent};
+    box-shadow: 1px 1px 10px 3px rgba(0, 0, 0, 0.2);
   }
 `;

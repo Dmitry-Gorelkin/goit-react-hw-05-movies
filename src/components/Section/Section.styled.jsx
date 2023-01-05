@@ -6,4 +6,6 @@ export const Section = styled.div`
 
   padding-top: ${p => p.theme.space[5]}px;
   padding-bottom: ${p => p.theme.space[5]}px;
+
+  margin: 0px auto;
 `;

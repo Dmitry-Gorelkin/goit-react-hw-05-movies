@@ -6,6 +6,5 @@ export const theme = Object.freeze({
     light: '#f2f2f2',
     dark: '#212121',
   },
-
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024],
 });

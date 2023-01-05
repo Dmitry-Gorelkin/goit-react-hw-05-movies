@@ -3,13 +3,17 @@ import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { fhechGetCreditsMovies } from 'api';
 import image from '../../img/film-card.jpg';
+import { Loader } from 'components/Loader/Loader';
+import { CastWraper, CastCard, CastImg, CastName } from './Cast.styled';
 
 const Cast = () => {
   const { id } = useParams();
   const [cast, setCast] = useState([]);
+  const [status, setStatus] = useState('ideal');
 
   useEffect(() => {
     const movieCastFech = async () => {
+      setStatus('laoding');
       try {
         const movieData = await fhechGetCreditsMovies(id);
 
@@ -21,30 +25,42 @@ const Cast = () => {
           return { id, name, character, profilePath };
         });
         setCast([...arrMovieData]);
+        setStatus('ideal');
       } catch {
         toast.error(
           `Что-то пошло не так, попробуйте перезагрузить страницу попозже.`
         );
+        setStatus('error');
       }
     };
 
     movieCastFech();
   }, [id]);
 
-  return (
-    <ul>
-      {cast.map(e => {
-        const { id, name, character, profilePath } = e;
-        return (
-          <li key={id}>
-            <img src={profilePath} alt="name" />
-            <p>{name}</p>
-            <p>Character: {character}</p>
-          </li>
-        );
-      })}
-    </ul>
-  );
+  if (status === 'laoding') {
+    return <Loader />;
+  }
+
+  if (status === 'error') {
+    return;
+  }
+
+  if (status === 'ideal') {
+    return (
+      <CastWraper>
+        {cast.map(e => {
+          const { id, name, character, profilePath } = e;
+          return (
+            <CastCard key={id}>
+              <CastImg src={profilePath} alt="name" />
+              <CastName>{name}</CastName>
+              <p>Character: {character}</p>
+            </CastCard>
+          );
+        })}
+      </CastWraper>
+    );
+  }
 };
 
 export default Cast;
