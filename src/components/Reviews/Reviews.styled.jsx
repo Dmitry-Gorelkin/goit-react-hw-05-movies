@@ -41,6 +41,8 @@ export const LoadMore = styled.div`
 
   border-radius: ${p => p.theme.space[3]}px;
 
+  cursor: pointer;
+
   :hover,
   :focus-visible {
     color: ${p => p.theme.colors.accent};
