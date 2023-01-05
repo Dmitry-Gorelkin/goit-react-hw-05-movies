@@ -26,8 +26,7 @@ const Reviews = () => {
         setStatus('laoding');
 
         if (movieData.total_results === 0) {
-          toast.error(`We don't have any reviews for this movie.`);
-          setStatus('ideal');
+          setStatus('noIdeal');
           return;
         }
 
@@ -76,6 +75,9 @@ const Reviews = () => {
           })}
         </ReviewsWraper>
       )}
+
+      {status === 'noIdeal' && <p>We don't have any reviews for this movie.</p>}
+
       {status === 'loadMore' && (
         <BoxLoadMore>
           <LoadMore onClick={nextPage}>Load More</LoadMore>

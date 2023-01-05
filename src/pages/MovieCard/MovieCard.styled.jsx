@@ -60,6 +60,10 @@ export const BoxAddInfo = styled.div`
 
   margin-bottom: ${p => p.theme.space[4]}px;
 
+  p {
+    font-weight: bold;
+  }
+
   *:not(:last-child) {
     margin-bottom: ${p => p.theme.space[2]}px;
   }

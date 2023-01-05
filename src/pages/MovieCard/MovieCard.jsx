@@ -91,7 +91,7 @@ const MovieCard = () => {
           </CardOverview>
         </CardWraper>
         <BoxAddInfo>
-          <p>Additional information</p>
+          <p>Additional information:</p>
           <StyledLinkCard to="cast">Cast</StyledLinkCard>
           <StyledLinkCard to="reviews">Reviews</StyledLinkCard>
         </BoxAddInfo>

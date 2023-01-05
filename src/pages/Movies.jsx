@@ -71,6 +71,7 @@ const Movies = () => {
   return (
     <>
       <SearchMovie onSubmit={onSubmitMovie} query={query} />
+
       {movies.length !== 0 && <MovieList movies={movies} />}
       {status === 'laoding' && <Loader />}
 
