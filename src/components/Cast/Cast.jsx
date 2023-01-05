@@ -17,6 +17,11 @@ const Cast = () => {
       try {
         const movieData = await fhechGetCreditsMovies(id);
 
+        if (movieData.cast.length === 0) {
+          setStatus('noIdeal');
+          return;
+        }
+
         const arrMovieData = movieData.cast.map(e => {
           const { id, name, character, profile_path } = e;
           const profilePath = profile_path
@@ -41,10 +46,6 @@ const Cast = () => {
     return <Loader />;
   }
 
-  if (status === 'error') {
-    return;
-  }
-
   if (status === 'ideal') {
     return (
       <CastWraper>
@@ -60,6 +61,14 @@ const Cast = () => {
         })}
       </CastWraper>
     );
+  }
+
+  if (status === 'noIdeal') {
+    return <p>We don't have any cast for this movie.</p>;
+  }
+
+  if (status === 'error') {
+    return;
   }
 };
 
